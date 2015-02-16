@@ -43,6 +43,7 @@ keep_loading:
 	MRS	r0,	cpsr
 	BIC	r1,	r0,	#0x1F
 	ORR	r1,	r1,	#0x12
+	MSR	cpsr,	r1
 /*  Change to IRQ Mode */
 	LDR	sp,	=irq_stack_top
 	
