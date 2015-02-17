@@ -10,16 +10,18 @@ LINKER = irq_timer.ld
 all: irq_timer.bin
 
 irq_timer.bin: irq_timer
-	$(OBJCOPY) -O binary irq_timer irq_timer.bin
+	$(OBJCOPY) -O binary irq_timer $@
 
 irq_timer: vectors.o irq_timer.o
-	$(CC) -T $(LINKER) -nostdlib -Xlinker --build-id=none irq_timer.o vectors.o -o irq_timer
+	$(CC) -T $(LINKER) -nostdlib -Xlinker --build-id=none $^ -o $@
 
 irq_timer.o: irq_timer.c Makefile
-	$(CC) -mcpu=arm926ej-s -c -marm -o irq_timer.o irq_timer.c
+	$(CC) -mcpu=arm926ej-s -c -marm -o $@ irq_timer.c
 
 vectors.o: vectors.S Makefile
-	$(CC) -mcpu=arm926ej-s -c -marm -o vectors.o vectors.S
+	$(CC) -mcpu=arm926ej-s -c -marm -o $@ vectors.S
+
+.PHONY: clean
 
 clean:
-	$(RM) irq_timer.bin irq_timer irq_timer.o vectors.o
+	$(RM) -fr irq_timer.bin irq_timer irq_timer.o vectors.o
