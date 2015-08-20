@@ -43,6 +43,7 @@ void c_irq_handler()
 
 void boot_main(void)
 {
+	int i;
 	*(PIC + PIC_INTENABLE) = PIC_TIMER01;
 	*TIMER0 = 1000000;
 
@@ -51,5 +52,5 @@ void boot_main(void)
 
 	enable_irq();
 	
-	for(;;);
+	for(i = 0; i < 10; ++i);
 }
