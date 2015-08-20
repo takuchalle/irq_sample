@@ -1,4 +1,5 @@
 # irq_sample
+[![Build Status](https://travis-ci.org/takuyaohashi/irq_sample.svg?branch=master)](https://travis-ci.org/takuyaohashi/irq_sample)
 
 # Requirements
 
