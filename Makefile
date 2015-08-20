@@ -13,7 +13,7 @@ QEMU = qemu-system-arm
 QEMU_MACHINE = versatilepb
 QEMU_CPU = arm1176
 QEMU_MEMORY = 256
-QEMU_SERIAL = stdio
+QEMU_SERIAL = file:output.log
 QEMU_OPT = -nographic -m $(QEMU_MEMORY) -M $(QEMU_MACHINE) -cpu $(QEMU_CPU) -serial $(QEMU_SERIAL)
 
 #
