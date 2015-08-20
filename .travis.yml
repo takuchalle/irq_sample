@@ -1,8 +1,7 @@
 language: c
 before_install:
   - sudo apt-get update
-  - sudo apt-get install gcc-arm-linux-gnueabi qemu qemu-system
+  - sudo apt-get install gcc-arm-linux-gnueabi qemu-system
 script:
-  - ls /usr/bin
   - make
   - make run
