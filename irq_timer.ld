@@ -1,13 +1,18 @@
+MEMORY
+{
+	RAM	(rwx)	: ORIGIN = 0x00010000, LENGTH = 128M
+}
+
 ENTRY(vectors_start)
+
 SECTIONS
 {
-	. = 0x10000;
 	.text : {
 	      vectors.o
 	      *(.text .rodata)
-	}
-	.data : { *(.data) }
-	.bss : { *(.bss) }
+	} > RAM
+	.data : { *(.data) } > RAM
+	.bss : { *(.bss) } > RAM
 	.stack : {
 	       . = . + 0x1000;
 	       . = ALIGN(4);
@@ -15,6 +20,6 @@ SECTIONS
 	       . = . + 0x1000;
 	       . = ALIGN(4);
 	       irq_stack_top = .;
-	}
+	} > RAM
 }
 
